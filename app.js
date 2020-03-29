@@ -19,22 +19,26 @@ const server = app.listen(port, () => {
 // this is where all the socket.io messaging functions go
 io.attach(server);
 
-io.on('connection', function(socket) {
-    console.log('user connected');
-    socket.emit('connected', {sID: `${socket.id}`, message: 'new connection'});
+const users = {}
+
+io.on('connection', socket => {
+    socket.on('new-user', name => {
+        users[socket.id] = name
+        io.emit('user-connected', name)
+    })
 
     //listen for an incoming message from user
-    socket.on('chat_message', function(msg) {
-        console.log(msg);
-
-        io.emit('new_message', { id: socket.id, message: msg });
-    });
+    socket.on('chat-message', message => {
+        io.emit('new-message', { id: socket.id, message: message });
+    })
 
     //listen for disconnect
-    socket.on('disconnect', function() {
-        console.log('a user disconnected');
-
-        message = `${socket.id} has left the chat`;
-        io.emit('user_disconnect', message);
+    socket.on('disconnect', () => {
+        io.emit('user-disconnected', users[socket.id])
+        delete users[socket.id]
     });
 });
+
+    // socket.on('typing', function(data) {
+    //     socket.broadcast.emit("typing", data)
+    // });
