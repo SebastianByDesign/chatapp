@@ -1,25 +1,29 @@
-.new-message { 
-    span { font-size: 0.8rem; display: block; margin-bottom: 2px; }
+.new-message {
+    &:first-child {
+        margin-top: 15px;
+    }
 
-    width: 45%;
-    padding: 8px 12px;
-    background-color: white; 
-    border-radius: 8px;
-    margin-bottom: 1rem;
+    div {
+        margin-top: auto;
+        margin-bottom: auto;
+        position: relative;
+        display: block;
+        border-radius: 25px;
+        padding: 10px 15px;
+    }
 
-    float:left;
-    clear: both;
-}
+    .message-receive {
+        background-color: #82ccdd;
+        margin-left: 10px;
+    }
 
-.my-message {
-    float: right !important;
-    background-color: #86bf9d;
-    color: white;
-}
+    .connect-message {
+        background-color: #555;
+        color: white;
+    }
 
-.connect-message {
-    float: none !important;
-    margin: 0 auto 15px auto;
-    text-align: center;
-    background-color: transparent !important;
+    .message-send {
+        background-color: #78e08f;
+        margin-right: 10px;
+    }
 }
