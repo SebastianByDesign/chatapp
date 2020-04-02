@@ -32,7 +32,7 @@ const vm = new Vue({
 
 }).$mount("#app")
 
-const name = prompt('what is your name?')
+const name = prompt('What is your name?')
 vm.name = name
 
 vm.messages.push('You connected')

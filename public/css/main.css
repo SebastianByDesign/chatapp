@@ -12,9 +12,13 @@
   height: 100vh;
 }
 
-@media screen and (max-width: 975px) {
+@media (max-width: 991px) {
   #messages {
     height: 60vh !important;
+  }
+
+  .form-container form {
+    height: 40vh !important;
   }
 }
 .new-message:first-child {
