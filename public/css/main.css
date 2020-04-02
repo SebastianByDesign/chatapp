@@ -12,6 +12,11 @@
   height: 100vh;
 }
 
+@media screen and (max-width: 975px) {
+  #messages {
+    height: 60vh !important;
+  }
+}
 .new-message:first-child {
   margin-top: 15px;
 }
