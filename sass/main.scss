@@ -18,6 +18,12 @@
 	}
 }
 
+@media screen and (max-width: 975px) {
+	#messages {
+		height:60vh !important;
+	}
+}
+
 // imports
 
 @import 'modules/_message';
