@@ -4,31 +4,42 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Socket IO Chat with Node!</title>
+	
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	<link rel="stylesheet" href="css/main.css">
 	<script src="https://unpkg.com/vue"></script>
 </head>
 
-<body>
-	<main id="app">
-		<section class="form-container">
+<body class="container-fluid">
+	<main id="app" class="row">
+		<section class="form-container col-lg-4">
 			<form>
-				<label for="name">Your name</label>
-				<input v-model="name" type="text" id="name" class="name" required placeholder="What is your nickname?">
-				<label for="message">Something to say?</label>
-				<textarea v-model="message" id="message" type="text" autocomplete="off"></textarea>
-				<input @click.prevent="dispatchMessage" type="submit">
+				<form-group>
+					<label for="name">Your name:</label>
+					<input v-model="name" type="text" id="name" class="name form-control" placeholder="What is your name?" readonly>
+				</form-group>
+				<br>
+				<form-group>
+					<label for="message">Something to say?</label>
+					<textarea class="form-control" v-model="message" id="message" type="text" autocomplete="off"></textarea>
+				</form-group>
+				<br>
+				<button class="btn btn-primary" @click.prevent="dispatchMessage" type="submit">Submit</button>
 			</form>
 		</section>
 
-		<section class="messages">
-			<ul id="messages">
+		<section class="messages col-lg-8">
+			<div id="messages">
 				<!-- render a new message component for every message -->
 				<newmessage :message="message" v-for="message in messages"></newmessage>
-			</ul>
+			</div>
 		</section>
 	</main>
 	<script src="/socket.io/socket.io.js"></script>
 	<script type="module" src="js/main_vm.js"></script>
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+	<script src="https://c	dn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </body>
 
 </html>
